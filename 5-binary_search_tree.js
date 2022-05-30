@@ -136,11 +136,22 @@ class BST {
       return right + 1
     };
   }
-  findMaxHeight(){}
-  isorder(){}
-  preorder(){}
-  postorder(){}
-  levelorder(){}
+  findMaxHeight(){
+    if (node == null) {
+      return -1;
+    };
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if(left  > right) {
+      return left + 1
+    } else {
+      return right + 1
+    };
+  }
+  inOrder(){}
+  preOrder(){}
+  postOrder(){}
+  levelOrder(){}
 }
 
 const bst = new BST();
