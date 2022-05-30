@@ -176,7 +176,20 @@ class BST {
       return result;
     }
   }
-  postOrder(){}
+  postOrder(){
+    if(this.root == null) {
+      return null;
+    } else {
+      var result = new Array();
+      function traversePostOrder(node) {
+        node.left && traversePostOrder(node.left);
+        node.right && traversePstOrder(node.right);
+        result.push(node.data);
+      }
+      traversePostOrder(this.root);
+      return result;
+    }
+  }
   levelOrder(){}
 }
 
