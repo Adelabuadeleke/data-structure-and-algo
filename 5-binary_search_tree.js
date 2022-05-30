@@ -120,6 +120,16 @@ class BST {
     }
     this.root= removeNode(this.root, data)
   }
+  isbalanced(){
+    return(this.findMinHeight() >= this.findMaxHeight() - 1)
+  }
+
+  findMinHeight(){}
+  findMaxHeight(){}
+  isorder(){}
+  preorder(){}
+  postorder(){}
+  levelorder(){}
 }
 
 const bst = new BST();
