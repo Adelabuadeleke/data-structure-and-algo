@@ -124,7 +124,18 @@ class BST {
     return(this.findMinHeight() >= this.findMaxHeight() - 1)
   }
 
-  findMinHeight(){}
+  findMinHeight(){
+    if (node == null) {
+      return -1;
+    };
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    if(left  < right) {
+      return left + 1
+    } else {
+      return right + 1
+    };
+  }
   findMaxHeight(){}
   isorder(){}
   preorder(){}
