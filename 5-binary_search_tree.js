@@ -124,7 +124,7 @@ class BST {
     return(this.findMinHeight() >= this.findMaxHeight() - 1)
   }
 
-  findMinHeight(){
+  findMinHeight(node = this.root){
     if (node == null) {
       return -1;
     };
@@ -136,7 +136,7 @@ class BST {
       return right + 1
     };
   }
-  findMaxHeight(){
+  findMaxHeight(node = this.root){
     if (node == null) {
       return -1;
     };
@@ -183,7 +183,7 @@ class BST {
       var result = new Array();
       function traversePostOrder(node) {
         node.left && traversePostOrder(node.left);
-        node.right && traversePstOrder(node.right);
+        node.right && traversePostOrder(node.right);
         result.push(node.data);
       }
       traversePostOrder(this.root);
