@@ -9,7 +9,7 @@ var hash = (string, max) => {
 
 let HashTable = function() {
   let storage = [];
-  const storageLimit = 4;
+  const storageLimit = 14;
 
   this.print = function() {
     console.log(storage)
@@ -17,7 +17,7 @@ let HashTable = function() {
 
   this.add = function(key, value) {
     var index = hash(key, storageLimit);
-    if(storage[index] === undefined) {
+    if(storage[index] == undefined) {
       storage[index] = [
         [key, value]
       ];
@@ -50,7 +50,7 @@ let HashTable = function() {
 
   this.lookup = function(key) {
     var index = hash(key, storageLimit);
-    if(storage[index] = undefined) {
+    if(storage[index] == undefined) {
       return undefined;
     } else {
       for (var i = 0; i < storage[index].length; i++) {
@@ -63,3 +63,11 @@ let HashTable = function() {
 }
 
 console.log(hash('quincy', 10));
+
+let ht = new HashTable();
+ht.add('beau', 'person');
+ht.add('fido', 'dog');
+ht.add('rex', 'dinosaur');
+ht.add('tux', 'penguin');
+console.log(ht.lookup('tux'));
+ht.print();
