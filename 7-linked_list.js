@@ -42,5 +42,9 @@ function LinkedList(){
       }
       length--;
     }
+
+    this.isEmpty = function() {
+      return length === 0;
+    }
   }
 }
