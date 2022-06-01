@@ -25,23 +25,25 @@ function LinkedList(){
       while(currentNode.next){
         currentNode = currentNode.next;
       }
-      length++;
-    };
+      currentNode.next = node
+    }
+    length++;
+  };
 
-    this.remove = function(element){
-      var currentNode = head;
-      var previousNode;
-      if(currentNode.element === element){
-        head  = currenNode.next;
-      } else {
-        while(currentNode.element !== element) {
-          previousNode = currentNode;
-          currentNode = currentNode.next;
-        }
-        previousNode.next = currentNode.next;
+  this.remove = function(element){
+    var currentNode = head;
+    var previousNode;
+    if(currentNode.element === element){
+      head  = currenNode.next;
+    } else {
+      while(currentNode.element !== element) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
       }
-      length--;
-    };
+      previousNode.next = currentNode.next;
+    }
+    length--;
+  };
 
     this.isEmpty = function() {
       return length === 0;
@@ -59,17 +61,18 @@ function LinkedList(){
         currentNode = currentNode.next;
       }
       return -1;
-    }
+    };
 
     this.elementAt = function(index) {
       var currentNode = head;
       var count = 0;
       while (count < index) {
         count++;
-        currentNode = currentNode.next
+        currentNode = currentNode.next;
+        // console.log(currentNode)
       }
       return currentNode.element;
-    }
+    };
 
     this.addAt = function(index, element){
       var node = new Node(element);
@@ -97,22 +100,40 @@ function LinkedList(){
       length++
     }
 
-    this.removeAt = function() {
+    this.removeAt = function(index) {
       var currentNode = head;
       var previousNode;
       var currentIndex = 0;
+      if(index < 0 || index >= length){
+        return null;
+      }
+
       if(index === 0) {
-        head - currentNode.next;
+        head = currentNode.next;
       } else {
         while(currentIndex < index) {
           currentIndex++;
           previousNode = currentNode;
+          // console.log(head)
           currentNode = currentNode.next;
         }
-        previousNode.next = currentNode.element;
+        previousNode.next = currentNode.next;
       }
       length--;
       return currentNode.element
     }
-  };
+  
 }
+
+var conga = new LinkedList();
+conga.add('Kitten');
+conga.add('Puppy');
+conga.add('Dog');
+conga.add('Cat');
+conga.add('Fish');
+console.log(conga.size());
+console.log(conga.removeAt(3));
+console.log(conga.elementAt(3));
+console.log(conga.indexOf('Puppy'));
+console.log(conga.size());
+// console.log(conga.size());
