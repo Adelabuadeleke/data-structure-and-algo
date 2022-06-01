@@ -41,10 +41,24 @@ function LinkedList(){
         previousNode.next = currentNode.next;
       }
       length--;
-    }
+    };
 
     this.isEmpty = function() {
       return length === 0;
+    };
+
+    this.indexOf = function(element) {
+      var currentNode = head;
+      var index = -1;
+
+      while(currentNode){
+        index++;
+        if(currentNode.element === element){
+          return index;
+        }
+        currentNode = currentNode.next;
+      }
+      return -1;
     }
-  }
+  };
 }
