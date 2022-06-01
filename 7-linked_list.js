@@ -12,5 +12,7 @@ function LinkedList(){
     return length;
   }
 
-
+  this.head = function() {
+    return head;
+  }
 }
