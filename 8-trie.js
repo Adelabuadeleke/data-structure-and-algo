@@ -26,7 +26,7 @@ let Trie = function() {
       return this.add(input.substr(1), node.keys.get(input[0]));
     };
   };
-  
+
   this.isWord = function(word) {
     let node =  this.root;
     while (word.length > 1) {
@@ -40,4 +40,23 @@ let Trie = function() {
     return (node.keys.has(word) && node.keys.get(word).isEnd())? true:false;
   }
 
+  this.print = function () {
+    let words = new Array();
+    let search = function(node, string) {
+      if(node.keys.size != 0) {
+        for(let letter of node.keys.keys()) {
+          search(node.keys.get(letter), string.concat(letter));
+        };
+      } if(node.isEnd()){
+        words.push(string);
+      } else {
+        string.length > 0 ? words.push(string) : undefined;
+        return;
+      };
+    };
+    search(this.root, new String());
+    return words.length > 0 ? words : null;
+  };
+
 };
+
