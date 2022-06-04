@@ -59,4 +59,12 @@ let MinHeap = function() {
     };
       return smallest
   }
+
+  this.sort = function () {
+    let result = new Array();
+    while(heap.length > 1) {
+      result.push(this.remove())
+    };
+    return result;
+  };
 }
